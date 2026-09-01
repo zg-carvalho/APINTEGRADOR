@@ -1,11 +1,12 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreateNoticiaDto } from "./dto/create-noticia.dto";
+import { UpdateNoticiaDto } from "./dto/update-noticia.dto";
 
 export interface Noticia {
   id: number;
   name?: string;
   description?: string;
-  auth?:string;
+  auth?: string;
   createdAt: Date;
 }
 
@@ -22,17 +23,41 @@ export class NoticiaService {
     const newNoticia: Noticia = {
       id: this.nextId++,
       ...createNoticiaDto,
-      createdAt:new Date()
+      createdAt: new Date()
     }
 
     this.noticias.push(newNoticia)
 
     return newNoticia
-}
+  }
 
-findAll(): Noticia[]{
+  findAll(): Noticia[] {
 
-  return this.noticias
-}
+    return this.noticias
+  }
 
+  findOne(id: number): Noticia {
+
+    const noticia = this.noticias.find((p) => p.id === id)
+
+    if (!noticia) {
+      throw new NotFoundException(`Noticia com ID ${id} não encontrodo.`)
+    }
+
+    return noticia
+  }
+
+  update(id: number, updateNoticiaDto: UpdateNoticiaDto): Noticia {
+    const noticia = this.findOne(id)
+
+    Object.assign(noticia, updateNoticiaDto)
+    
+    return noticia
+  }
+
+  remove(id: number): void {
+    this.findOne(id)
+
+    this.noticias = this.noticias.filter((p) => p.id !== id)
+  }
 }
