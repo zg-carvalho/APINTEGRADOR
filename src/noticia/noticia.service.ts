@@ -4,7 +4,7 @@ import { UpdateNoticiaDto } from "./dto/update-noticia.dto";
 
 export interface Noticia {
   id: number;
-  name?: string;
+  slog?: string;
   description?: string;
   auth?: string;
   createdAt: Date;
