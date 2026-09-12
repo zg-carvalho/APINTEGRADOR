@@ -59,6 +59,11 @@ export class NoticiaController {
         return this.noticiaService.findOne(id)
     }
 
+    @Get('slug/:slug')
+    findSlug(@Param(`slug`) slug: string) {
+        return this.noticiaService.findBySlug(slug);
+    }
+
     @Patch(':id')
     update(
         @Param('id', ParseIntPipe) id: number,

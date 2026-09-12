@@ -1,7 +1,10 @@
 export class UpdateNoticiaDto {
-    nome?: string;
+    name?: string;
+    slug?: string;
+    sections?: Array<{
+        id: string;
+        type: string;
+        content: Record<string, any>;
+    }>
 
-    discription?: string;
-
-    
 }

@@ -2,12 +2,19 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreateNoticiaDto } from "./dto/create-noticia.dto";
 import { UpdateNoticiaDto } from "./dto/update-noticia.dto";
 
+export interface PageSection {
+  id?: string;
+  type?: string;
+  content?: Record<string, any>;
+}
+
 export interface Noticia {
   id: number;
-  slog?: string;
-  description?: string;
-  auth?: string;
-  createdAt: Date;
+  name?: string;
+  slug?: string;
+  sections?: PageSection[];
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 @Injectable()
@@ -22,8 +29,12 @@ export class NoticiaService {
 
     const newNoticia: Noticia = {
       id: this.nextId++,
-      ...createNoticiaDto,
-      createdAt: new Date()
+      name: createNoticiaDto.name,
+      slug: createNoticiaDto.slug,
+      sections: createNoticiaDto.sections ?? [],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+
     }
 
     this.noticias.push(newNoticia)
@@ -51,7 +62,7 @@ export class NoticiaService {
     const noticia = this.findOne(id)
 
     Object.assign(noticia, updateNoticiaDto)
-    
+
     return noticia
   }
 
@@ -59,5 +70,13 @@ export class NoticiaService {
     this.findOne(id)
 
     this.noticias = this.noticias.filter((p) => p.id !== id)
+  }
+
+  findBySlug(slug: string): Noticia {
+    const noticia = this.noticias.find((p) => p.slug === slug);
+    if (!noticia) {
+      throw new NotFoundException(`Noticia com slug "${slug}" não encontrada`)
+    }
+    return noticia;
   }
 }
