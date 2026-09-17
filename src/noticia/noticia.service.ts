@@ -12,9 +12,11 @@ export interface Noticia {
   id: number;
   name?: string;
   slug?: string;
-  sections?: PageSection[];
-  createdAt?: Date;
-  updatedAt?: Date;
+  description?: string;
+  coverImage?: string;
+  sections: PageSection[];
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 @Injectable()
@@ -31,6 +33,8 @@ export class NoticiaService {
       id: this.nextId++,
       name: createNoticiaDto.name,
       slug: createNoticiaDto.slug,
+      description: createNoticiaDto.description,
+      coverImage: createNoticiaDto.coverImage,
       sections: createNoticiaDto.sections ?? [],
       createdAt: new Date(),
       updatedAt: new Date(),
