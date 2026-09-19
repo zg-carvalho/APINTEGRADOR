@@ -70,6 +70,21 @@ $ mau deploy
 
 With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
 
+## Observability
+
+In production applications, observability is essential for understanding how your system behaves, detecting issues early, and maintaining reliable performance.
+
+[NestJS Observe](https://observe.nestjs.com) automatically instruments your NestJS application, giving you deep visibility into your system with minimal setup:
+
+- **Distributed tracing:** Follow requests across services and understand how they flow through your system.
+- **Waterfall analysis:** Visualize request execution and identify slow operations, bottlenecks, and unexpected delays.
+- **Performance analysis:** Analyze application performance in real time and quickly pinpoint areas that need optimization.
+- **Metrics:** Track key application and infrastructure metrics to understand system health and performance trends.
+- **Logging:** Centralize and correlate logs with traces and other telemetry to make debugging easier.
+- **Error tracking:** Detect errors quickly and investigate their root causes with the surrounding context.
+- **SLA monitoring:** Track service-level objectives and identify when your application is approaching or exceeding defined thresholds.
+- **Alarms and alerts:** Set up alerts for critical errors, performance degradation, SLA violations, and other anomalies so your team can react quickly.
+
 ## Resources
 
 Check out a few resources that may come in handy when working with NestJS:
@@ -78,6 +93,7 @@ Check out a few resources that may come in handy when working with NestJS:
 - For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
 - To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
 - Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
+- Auto-instrument your application with [NestJS Observer](https://observer.nestjs.com). Distributed tracing, metrics, and logging made easy. Error tracking and performance monitoring for your NestJS applications.
 - Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
 - Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
 - To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
@@ -96,3 +112,49 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+
+Exemplo de payload ao salvar um produto:
+
+{
+    "name": "Novo Produto",
+    "slug": "novo-produto",
+    "sections": [
+        {
+            "id": "text-1789235776262",
+            "type": "text",
+            "content": {
+                "title": "Sobre o Produto",
+                "body": "Escreva aqui uma descrição detalhada do produto.",
+                "align": "left"
+            }
+        },
+        {
+            "id": "text-1789235787470",
+            "type": "text",
+            "content": {
+                "title": "Sobre o Produto",
+                "body": "Escreva aqui uma descrição detalhada do produto.",
+                "align": "left"
+            }
+        },
+        {
+            "id": "gallery-1789235792156",
+            "type": "gallery",
+            "content": {
+                "title": "Galeria de Imagens",
+                "images": [
+                    {
+                        "url": "http://localhost:3000/uploads/505c8a2d-d868-4fc3-8081-4af957303e5e.png",
+                        "caption": ""
+                    },
+                    {
+                        "url": "http://localhost:3000/uploads/aaa0d264-5414-4401-9643-747a88bf1114.png",
+                        "caption": ""
+                    }
+                ]
+            }
+        }
+    ]
+}

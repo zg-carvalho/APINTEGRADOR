@@ -1,4 +1,4 @@
-export class CreateNoticiaDto {
+export class UpdateNoticiaDto {
   name?: string;
   slug?: string;
   description?: string;
