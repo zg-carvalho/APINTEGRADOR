@@ -1,6 +1,6 @@
-import {
-  Controller,
-  Get,
+import { // Controller é uma camada considera garçom, porque a função dele é receber pedidos das rotas http e levar para a camada Serviço
+  Controller,// e devolver com o status semântico correto. Ele é quem faz as requisições com os verbos que estão importados aqui
+  Get,  // os verbos tem a ação de criar, listar, atualizar ou deletar
   Post,
   Patch,
   Delete,
@@ -16,7 +16,7 @@ import { CreateUserDto } from './dto/create-user.dto.js';
 import { UpdateUserDto } from './dto/update-user.dto.js';
 import { JwtAuthGuard } from '../auth/jwt.guard.js';
 
-@Controller('users')
+@Controller('users') // 
 @UseGuards(JwtAuthGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
