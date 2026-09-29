@@ -13,7 +13,7 @@ async function bootstrap() {
   app.useStaticAssets(uploadsDir, { prefix: '/uploads' });
 
   app.enableCors({
-    origin: ['https://atividade-02-6d7wif0ds-josielcarvalho70-2175s-projects.vercel.app'],
+    origin: ['http://localhost:5173', 'http://localhost:4173'],
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],
   });
