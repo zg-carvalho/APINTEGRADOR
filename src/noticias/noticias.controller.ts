@@ -68,7 +68,7 @@ export class NoticiasController {
   )
   uploadFile(@UploadedFile() file: MulterFile) {
     if (!file) throw new BadRequestException('Nenhum arquivo enviado');// Se tudo der certo, o arquivo é salvo no disco do servidor e o método retorna um objeto contendo a URL completa da imagem. 
-    return { url: `http://localhost:3000/uploads/${file.filename}` };//Esse link é o que o seu frontend (ou Postman) recebe para salvar depois dentro do campo coverImage na hora de criar a notícia.
+    return { url: `https://apintegrador.onrender.com/uploads/${file.filename}` };//Esse link é o que o seu frontend (ou Postman) recebe para salvar depois dentro do campo coverImage na hora de criar a notícia.
   }
 
   @Post()
